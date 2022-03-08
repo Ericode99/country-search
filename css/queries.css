@@ -22,8 +22,8 @@
 /* Below 700px height */
 /* ///////////////////////////// */
 
-@media (max-height: 44em) {
+@media (max-height: 56em) {
   body {
-    height: 700px;
+    height: 900px;
   }
 }

@@ -1,0 +1,12 @@
+{
+  "name": "country-search",
+  "source": "index.html",
+  "browserslist": "since 2015",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "dependencies": {
+    "parcel": "^2.3.2"
+  }
+}

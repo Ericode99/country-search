@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/queries.css" rel="stylesheet" />
+
+    <script type="module" src="js/script.js"></script>
+
+    <title>Country Search</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="search-container">
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="search a country..."
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="search-icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </div>
+      <article class="country">
+        <img class="img" src="img/flag.png" />
+        <div class="data">
+          <h1 class="name">COUNTRY</h1>
+          <h2 class="region">REGION</h2>
+          <p class="capital"><span>🏛</span>CAPITAL</p>
+          <p class="inhabitants"><span>👫</span>INHABITANTS</p>
+          <p class="language"><span>🗣</span>LANGUAGE</p>
+          <p class="currency"><span>💰</span>CURRENCY</p>
+        </div>
+      </article>
+    </main>
+    <footer class="footer">
+      <p class="copyright">
+        &copy; Copyright <span class="year">2022</span> by Eric Rudischhauser.
+        All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

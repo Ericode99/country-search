@@ -4,8 +4,26 @@ const btn = document.querySelector(".search-icon");
 const countries = document.querySelector(".countries");
 
 // FUNCTIONS
+const renderError = function (err) {
+  // remove old data
+  if (document.querySelector(".country")) {
+    const old = document.querySelector(".country");
+    old.remove();
+  } else if (document.querySelector(".error")) {
+    const old = document.querySelector(".error");
+    old.remove();
+  }
+
+  const errhtml = `        
+    <article class="error">
+      <p class="error-message">${err}</p>
+    </article>`;
+  countries.insertAdjacentHTML("beforeend", errhtml);
+};
+
 const renderCountry = function (data) {
-  let html = `
+  try {
+    const html = `
     <article class="country">
     <img class="img" src="${data.flags.png}" />
     <div class="data">
@@ -25,13 +43,19 @@ const renderCountry = function (data) {
       }: ${Object.values(data.currencies)[0].name}</p>
     </div>
   </article>`;
-  countries.insertAdjacentHTML("beforeend", html);
+    countries.insertAdjacentHTML("beforeend", html);
+  } catch (err) {
+    renderError(err);
+  }
 };
 
 const search = function () {
-  // remove old country
+  // remove old data
   if (document.querySelector(".country")) {
     const old = document.querySelector(".country");
+    old.remove();
+  } else if (document.querySelector(".error")) {
+    const old = document.querySelector(".error");
     old.remove();
   }
 
@@ -41,13 +65,21 @@ const search = function () {
     fetch(`https://restcountries.com/v3.1/name/${country}`)
       .then((response) => {
         console.log(response);
+        if (response.status === 404) {
+          throw new Error("404 country not found");
+          return;
+        }
+        input.value = "";
         return response.json();
       })
+      .catch((err) => renderError(err))
       .then((data) => {
         console.log(data[0]);
         renderCountry(data[0]);
       });
-  } catch (err) {}
+  } catch (err) {
+    renderError(err);
+  }
 };
 
 // EVENTS
